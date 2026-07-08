@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Level1
 {
-    public static int ConquestCampaign(int N, int M, int L, int[] battalion)
+    public static int conquestCampaign(int N, int M, int L, int[] battalion)
       {
         int[][] trainingGround = new int[N][M];
 
