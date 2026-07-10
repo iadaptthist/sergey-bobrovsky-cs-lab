@@ -22,20 +22,12 @@ public class Level1
         int straightLineCount = 0;
         int diagonalLineCount = 0;
 
-        for(int i = 1; i < N; i++) {
+        for (int i = 1; i < N; i++) {
             int a = hits[i - 1];
             int b = hits[i];
 
-            int xDifference = x[a] - x[b];
-            int yDifference = y[a] - y[b];
-
-            if (xDifference < 0) {
-                xDifference = -xDifference;
-            }
-
-            if (yDifference < 0) {
-                yDifference = -yDifference;
-            }
+            int xDifference = Math.abs(x[a] - x[b]);
+            int yDifference = Math.abs(y[a] - y[b]);
 
             if (xDifference == 1 && yDifference == 1) {
                 diagonalLineCount++;
@@ -44,20 +36,11 @@ public class Level1
             }
         }
 
-        double lengthLine = straightLineCount + diagonalLineCount * 1.414213562373095;
+        double lengthLine = straightLineCount + diagonalLineCount * Math.sqrt(2);
 
-        long roundingToFifthDigit = (long)(lengthLine * 100000.0 + 0.5);
+        long roundingToFifthDigit = Math.round(lengthLine * 100000.0);
 
-        String s = Long.toString(roundingToFifthDigit);
-        String result = "";
-
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != '0') {
-                result += s.charAt(i);
-            }
-        }
-
-        return result;
+        return Long.toString(roundingToFifthDigit).replace("0", "");
       }
 }
 
