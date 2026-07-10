@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Level1
 {
-    public static string PatternUnlock(int N, int [] hits)
+    public static String PatternUnlock(int N, int [] hits)
       {
         int [] x = new int[10];
         int [] y = new int[10];
