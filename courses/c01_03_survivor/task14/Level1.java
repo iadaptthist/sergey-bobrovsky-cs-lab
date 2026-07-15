@@ -12,6 +12,10 @@ public class Level1
             int redTime = track[i][1];
             int greenTime = track[i][2];
 
+            if (position >= L) {
+                break;
+            }
+
             currentTime += position - previousPosition;
 
             int cycleLength = redTime + greenTime;
