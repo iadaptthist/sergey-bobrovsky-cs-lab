@@ -19,7 +19,7 @@ public class Level1
         }
 
         if (firstUnsortedIndex == -1) {
-            return true;
+            return false;
         }
 
         int lastUnsortedIndex = -1;
