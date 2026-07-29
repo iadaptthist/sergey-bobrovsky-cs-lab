@@ -16,10 +16,9 @@ public class Level1
         for (int i = 0; i < k; i++) {
             if (isDoorOpen[i]) {
                 result[i] = '1';
+                continue;
             }
-            if (!isDoorOpen[i]) {
-                result[i] = '0';
-            }
+            result[i] = '0';
         }
 
         return new String(result);
