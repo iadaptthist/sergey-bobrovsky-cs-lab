@@ -1,21 +1,18 @@
-public class Level1 
-{
-    public static boolean isStringPalindrome(String s) 
-  {
-        if (s.length() <= 1) {
+public class Level1 {
+    public static boolean isPalindromeString(String s) {
+        return isPalindrome(s, 0, s.length() - 1);
+    }
+
+    private static boolean isPalindrome(String s, int startIndex, int endIndex) {
+        if (startIndex >= endIndex) {
             return true;
         }
 
-        if (s.charAt(0) != s.charAt(s.length() - 1)) {
+        if (s.charAt(startIndex) != s.charAt(endIndex)) {
             return false;
         }
 
-        char[] remainingChars = new char[s.length() - 2];
-        for (int i = 1; i < s.length() - 1; i++) {
-            remainingChars[i - 1] = s.charAt(i);
-        }
-
-        return isStringPalindrome(new String(remainingChars));
+        return isPalindrome(s, startIndex + 1, endIndex - 1);
     }
 }
 
