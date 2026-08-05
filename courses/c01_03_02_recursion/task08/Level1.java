@@ -5,36 +5,32 @@ import java.util.List;
 public class Level1 {
     public static List<File> findAllFiles(String directoryPath) {
         ArrayList<File> foundFiles = new ArrayList<>();
-
         File startDirectory = new File(directoryPath);
 
         if (!startDirectory.exists()) {
             throw new IllegalArgumentException("Directory does not exist: " + directoryPath);
         }
-        if (!startDirectory.isDirectory()) {
-            throw new IllegalArgumentException("The specified path is not a directory: " + directoryPath);
+
+        if (startDirectory.isFile()) {
+            foundFiles.add(startDirectory);
+            return foundFiles;
         }
 
-        findAllFilesRecursive(startDirectory, foundFiles);
-
-        return foundFiles;
-    }
-
-    private static void findAllFilesRecursive(File currentItem, List<File> foundFiles) {
-        if (currentItem.isFile()) {
-            foundFiles.add(currentItem);
-            return;
-        }
-
-        File[] directoryItems = currentItem.listFiles();
+        File[] directoryItems = startDirectory.listFiles();
 
         if (directoryItems == null) {
-            return;
+            return foundFiles;
         }
 
         for (File item : directoryItems) {
-            findAllFilesRecursive(item, foundFiles);
+            if (item.isFile()) {
+                foundFiles.add(item);
+            } else if (item.isDirectory()) {
+                foundFiles.addAll(findAllFiles(item.getPath()));
+            }
         }
+
+        return foundFiles;
     }
 }
 
