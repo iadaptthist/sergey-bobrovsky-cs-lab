@@ -428,6 +428,35 @@ public class LinkedList_3 {
     }
 
     @Test
+    void insertAfterEmptyList() {
+        Node newNode = new Node(10);
+        list.insertAfter(null, newNode);
+        assertSame(newNode, list.head);
+        assertSame(newNode, list.tail);
+        assertNull(newNode.next);
+        assertEquals(1, list.count());
+    }
+
+    @Test
+    void insertAfterNullInNotEmptyList() {
+        Node first = new Node(10);
+        Node second = new Node(20);
+        Node third = new Node(30);
+        list.addInTail(first);
+        list.addInTail(second);
+        list.addInTail(third);
+        Node newNode = new Node(5);
+        list.insertAfter(null, newNode);
+        assertEquals(4, list.count());
+        assertEquals(5, list.head.value);
+        assertEquals(10, list.head.next.value);
+        assertEquals(20, list.head.next.next.value);
+        assertEquals(30, list.head.next.next.next.value);
+        assertEquals(third, list.tail);
+        assertNull(list.tail.next);
+    }
+
+    @Test
     void sumOfTwoEmptyLists() {
         LinkedList list1 = new LinkedList();
         LinkedList list2 = new LinkedList();
