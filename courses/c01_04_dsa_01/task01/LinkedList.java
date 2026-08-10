@@ -142,11 +142,24 @@ public class LinkedList
             return;
         }
 
+        if (_nodeAfter == null && this.head == null) {
+            _nodeToInsert.next = null;
+            this.head = _nodeToInsert;
+            this.tail = _nodeToInsert;
+            return;
+        }
+
+        if (_nodeAfter == null) {
+            _nodeToInsert.next = this.head;
+            this.head = _nodeToInsert;
+            return;
+        }
+        
         _nodeToInsert.next = _nodeAfter.next;
         _nodeAfter.next = _nodeToInsert;
 
-        if (_nodeAfter == tail) {
-            tail = _nodeToInsert;
+        if (_nodeAfter == this.tail) {
+            this.tail = _nodeToInsert;
         }
     }
 }
