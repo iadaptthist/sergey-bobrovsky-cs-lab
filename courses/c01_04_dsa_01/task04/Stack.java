@@ -23,7 +23,7 @@ public class Stack<T>
     public T pop()
     {
         if (stack.isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
+            return null;
         }
 
         return stack.remove(0);
@@ -41,7 +41,7 @@ public class Stack<T>
     public T peek()
     {
         if (stack.isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
+            return null;
         }
 
         return stack.get(0);
